@@ -50,9 +50,9 @@ public class Url extends AggregateRoot<UrlID> {
     }
 
     private static String shortUrl(String url) {
-        final var cripto = new UrlEncryptionService();
+        
 
-        return cripto.encrypt(url);
+        return UrlEncryptionService.encrypt(url);
 
     }
 
