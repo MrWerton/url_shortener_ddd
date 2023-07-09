@@ -22,19 +22,19 @@ public class Url extends AggregateRoot<UrlID> {
     ) {
         super(urlID);
         this.originalUrl = Objects.requireNonNull(originalUrl, "original url should not be null");
-        this.shortUrl = Objects.requireNonNull(shortUrl, "short url should not be null");
+        this.shortUrl = shortUrl;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
         this.expireAt = expireAt;
     }
 
     public static Url create(
-            String originalUrl,
-            String shortUrl
+            String originalUrl
     ) {
         final var ID = UrlID.unique();
         final var NOW = Instant.now();
-        return new Url(ID, originalUrl, shortUrl, NOW, NOW, NOW.plus(7, ChronoUnit.DAYS));
+        final var SHORT_URL = shortUrl(originalUrl);
+        return new Url(ID, originalUrl, SHORT_URL, NOW, NOW, NOW.plus(7, ChronoUnit.DAYS));
     }
 
     public static Url from(final Url url) {
@@ -48,6 +48,10 @@ public class Url extends AggregateRoot<UrlID> {
         );
     }
 
+    private static String shortUrl(String url) {
+        return url.substring(1, 3);
+
+    }
 
     public String getOriginalUrl() {
         return originalUrl;

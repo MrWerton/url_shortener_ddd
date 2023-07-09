@@ -4,7 +4,6 @@ package com.notrew.url.shortener.ddd.architecture.url;
 import com.notrew.url.shortener.ddd.architecture.url.persistence.UrlJpaEntity;
 import com.notrew.url.shortener.ddd.architecture.url.persistence.UrlRepository;
 import com.notrew.url.shortener.ddd.domain.url.entities.Url;
-import com.notrew.url.shortener.ddd.domain.url.entities.UrlID;
 import com.notrew.url.shortener.ddd.domain.url.gateways.UrlGateway;
 import org.springframework.stereotype.Service;
 
@@ -19,15 +18,17 @@ public class UrlGatewayImp implements UrlGateway {
     }
 
     @Override
-    public void create(Url url) {
+    public Url create(Url url) {
         final var toEntity = UrlJpaEntity.from(url);
-        urlRepository.save(toEntity);
+        final var response = urlRepository.save(toEntity);
+        return Url.from(response.toAgregate());
+
     }
 
+
     @Override
-    public Optional<Url> findById(UrlID id) {
-        System.out.println(id);
-        final var response = urlRepository.findById(id.getValue());
+    public Optional<Url> findByShortUrl(String url) {
+        final var response = urlRepository.findByShortUrl(url);
         return response.map(urlJpaEntity -> Url.from(urlJpaEntity.toAgregate()));
     }
 }

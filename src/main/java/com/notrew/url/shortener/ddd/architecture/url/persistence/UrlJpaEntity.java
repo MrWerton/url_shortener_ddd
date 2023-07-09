@@ -45,6 +45,6 @@ public class UrlJpaEntity {
     }
 
     public Url toAgregate() {
-        return Url.create(getOriginalUrl(), getShortUrl());
+        return Url.create(getOriginalUrl());
     }
 }

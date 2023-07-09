@@ -21,17 +21,16 @@ public class UrlController {
 
     @PostMapping("/")
     public ResponseEntity<?> createUrl(@RequestBody CreateUrlRequest body) {
-        final var url = UrlDTO.with(body.originalUrl(), body.shortUrl());
-        this.createUrlUseCase.execute(url);
-        return ResponseEntity.ok(url);
+        final var url = UrlDTO.with(body.originalUrl());
+        final var response = this.createUrlUseCase.execute(url);
+        return ResponseEntity.ok(response);
 
     }
 
     @GetMapping("/")
-    public ResponseEntity<UrlResponse> get(@RequestParam String id) {
-        System.out.println(id);
-        final var response = findByIdUseCase.execute(id);
-        final var url = new UrlResponse(response.shortUrl());
-        return ResponseEntity.ok(url);
+    public ResponseEntity<UrlResponse> get(@RequestParam String url) {
+        final var response = findByIdUseCase.execute(url);
+        final var responseUrl = new UrlResponse(response.shortUrl(), response.originalUrl());
+        return ResponseEntity.ok(responseUrl);
     }
 }
