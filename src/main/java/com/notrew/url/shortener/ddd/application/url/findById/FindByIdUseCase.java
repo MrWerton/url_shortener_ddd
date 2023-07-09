@@ -13,7 +13,10 @@ public class FindByIdUseCase extends UseCase<String, UrlOutput> {
 
     @Override
     public UrlOutput execute(String data) {
+
         final var id = UrlID.from(data);
+
+        System.out.println(id);
         return this.urlGateway.findById(id)
                 .map(UrlOutput::from)
                 .orElseThrow();

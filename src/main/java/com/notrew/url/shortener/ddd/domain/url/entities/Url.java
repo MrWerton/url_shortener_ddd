@@ -37,6 +37,18 @@ public class Url extends AggregateRoot<UrlID> {
         return new Url(ID, originalUrl, shortUrl, NOW, NOW, NOW.plus(7, ChronoUnit.DAYS));
     }
 
+    public static Url from(final Url url) {
+        return new Url(
+                url.getID(),
+                url.getOriginalUrl(),
+                url.getShortUrl(),
+                url.getCreatedAt(),
+                url.getUpdatedAt(),
+                url.getExpireAt()
+        );
+    }
+
+
     public String getOriginalUrl() {
         return originalUrl;
     }
