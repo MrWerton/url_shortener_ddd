@@ -9,6 +9,7 @@ import com.notrew.url.shortener.ddd.domain.url.gateways.UrlGateway;
 public class CreateUrlUseCase extends UseCase<UrlDTO, UrlResponse> {
     private final UrlGateway urlGateway;
 
+
     public CreateUrlUseCase(final UrlGateway urlGateway) {
         this.urlGateway = urlGateway;
     }

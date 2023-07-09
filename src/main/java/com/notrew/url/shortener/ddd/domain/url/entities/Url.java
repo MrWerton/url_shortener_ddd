@@ -1,6 +1,7 @@
 package com.notrew.url.shortener.ddd.domain.url.entities;
 
 import com.notrew.url.shortener.ddd.domain.shared.AggregateRoot;
+import com.notrew.url.shortener.ddd.domain.shared.services.UrlEncryptionService;
 
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
@@ -49,7 +50,9 @@ public class Url extends AggregateRoot<UrlID> {
     }
 
     private static String shortUrl(String url) {
-        return url.substring(1, 3);
+        final var cripto = new UrlEncryptionService();
+
+        return cripto.encrypt(url);
 
     }
 
