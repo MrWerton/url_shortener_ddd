@@ -1,12 +1,13 @@
 package com.notrew.url.shortener.ddd.domain.url;
 
 
+import com.notrew.url.shortener.ddd.domain.url.entities.Url;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class UrlTest {
     @Test
-    public void shouldCallCreateMethodAndReturnInstanceOfClassCorrectly(){
+    public void shouldCallCreateMethodAndReturnInstanceOfClassCorrectly() {
         final var ORIGINAL_URL = "http://example.com";
 
         final var SHORT_URL = "short.com";
@@ -20,10 +21,11 @@ public class UrlTest {
         Assertions.assertNotNull(sut.getExpireAt());
 
     }
-    @Test
-    public void shouldReturnErrorWhenRequiredParametersAreNull(){
 
-        Assertions.assertThrows(NullPointerException.class, ()->Url.create(null, null));
+    @Test
+    public void shouldReturnErrorWhenRequiredParametersAreNull() {
+
+        Assertions.assertThrows(NullPointerException.class, () -> Url.create(null, null));
 
     }
 }

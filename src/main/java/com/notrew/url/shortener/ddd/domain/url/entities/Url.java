@@ -1,4 +1,4 @@
-package com.notrew.url.shortener.ddd.domain.url;
+package com.notrew.url.shortener.ddd.domain.url.entities;
 
 import com.notrew.url.shortener.ddd.domain.shared.AggregateRoot;
 
@@ -13,17 +13,18 @@ public class Url extends AggregateRoot<UrlID> {
     private final Instant createdAt;
     private final Instant updatedAt;
     private final Instant expireAt;
-    protected Url(UrlID urlID,  String originalUrl,
-     String shortUrl,
-     Instant createdAt,
-     Instant updatedAt,
-     Instant expireAt
+
+    protected Url(UrlID urlID, String originalUrl,
+                  String shortUrl,
+                  Instant createdAt,
+                  Instant updatedAt,
+                  Instant expireAt
     ) {
         super(urlID);
-        this.originalUrl = Objects.requireNonNull(originalUrl,"original url should not be null" );
-        this.shortUrl = Objects.requireNonNull(shortUrl,"short url should not be null" );
+        this.originalUrl = Objects.requireNonNull(originalUrl, "original url should not be null");
+        this.shortUrl = Objects.requireNonNull(shortUrl, "short url should not be null");
         this.createdAt = createdAt;
-        this.updatedAt =updatedAt;
+        this.updatedAt = updatedAt;
         this.expireAt = expireAt;
     }
 
@@ -33,7 +34,7 @@ public class Url extends AggregateRoot<UrlID> {
     ) {
         final var ID = UrlID.unique();
         final var NOW = Instant.now();
-        return new Url(ID, originalUrl, shortUrl,NOW, NOW, NOW.plus(7, ChronoUnit.DAYS));
+        return new Url(ID, originalUrl, shortUrl, NOW, NOW, NOW.plus(7, ChronoUnit.DAYS));
     }
 
     public String getOriginalUrl() {

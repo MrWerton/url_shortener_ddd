@@ -1,4 +1,4 @@
-package com.notrew.url.shortener.ddd.domain.url;
+package com.notrew.url.shortener.ddd.domain.url.entities;
 
 import com.notrew.url.shortener.ddd.domain.shared.Identifier;
 import com.notrew.url.shortener.ddd.domain.shared.utils.IdUtils;
