@@ -1,4 +1,4 @@
-package com.notrew.url.shortener.ddd.application.url.findById;
+package com.notrew.url.shortener.ddd.application.url.findByShortUrl;
 
 import com.notrew.url.shortener.ddd.domain.url.entities.Url;
 import com.notrew.url.shortener.ddd.domain.url.entities.UrlID;

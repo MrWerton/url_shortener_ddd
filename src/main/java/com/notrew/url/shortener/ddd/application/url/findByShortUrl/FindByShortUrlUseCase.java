@@ -1,12 +1,12 @@
-package com.notrew.url.shortener.ddd.application.url.findById;
+package com.notrew.url.shortener.ddd.application.url.findByShortUrl;
 
 import com.notrew.url.shortener.ddd.application.shared.usecases.UseCase;
 import com.notrew.url.shortener.ddd.domain.url.gateways.UrlGateway;
 
-public class FindByIdUseCase extends UseCase<String, UrlOutput> {
+public class FindByShortUrlUseCase extends UseCase<String, UrlOutput> {
     private final UrlGateway urlGateway;
 
-    public FindByIdUseCase(final UrlGateway urlGateway) {
+    public FindByShortUrlUseCase(final UrlGateway urlGateway) {
         this.urlGateway = urlGateway;
     }
 
