@@ -1,4 +1,4 @@
-package com.notrew.url.shortener.ddd.domain;
+package com.notrew.url.shortener.ddd.domain.shared;
 
 import java.util.Objects;
 
@@ -22,6 +22,8 @@ public abstract class Entity<ID extends Identifier> {
     public int hashCode() {
         return Objects.hash(id);
     }
+
+
 
     public  ID getID() {
        return this.id;
